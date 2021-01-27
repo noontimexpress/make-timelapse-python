@@ -8,10 +8,11 @@ def main():
 
     vidName = input("Enter the video's name here: ")
     filepath = input("Enter the filepath if not in current directory: ")
+    pts = input("PTS: ")
     
     def runstream(name):
         stream = ffmpeg.input(name)
-        stream = ffmpeg.hflip(stream)
+        stream = ffmpeg.setpts(stream, pts)
         stream = ffmpeg.output(stream, 'output.mp4')
         ffmpeg.run(stream)
 
